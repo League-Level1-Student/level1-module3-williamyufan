@@ -28,24 +28,19 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 public class Jukebox implements Runnable, ActionListener {
 
     private static final String JButt = null;
-
-
+    Song v=new Song("y.mp3");
+    Song y=new Song("u.mp3");
+    Song u=new Song("i.mp3");
+    JButton p=new JButton("Happier");
+    JButton q=new JButton("Star Wars");
+    JButton a=new JButton("Avenger");
 	public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
-Song v=new Song("y.mp3");
-v.play();
-Song y=new Song("u.mp3");
-y.play();
-Song u=new Song("i.mp3");
-u.play();
 
 JFrame t=new JFrame();
 JPanel i=new JPanel();
-JButton p=new JButton();
-JButton q=new JButton();
-JButton a=new JButton();
 t.setVisible(true);
 t.add(i);
 i.add(p);
@@ -54,6 +49,10 @@ i.add(a);
 p.addActionListener(this);
 q.addActionListener(this);
 a.addActionListener(this);
+t.pack();
+
+
+
 
 		// 3. Play the Song
 
@@ -77,8 +76,18 @@ a.addActionListener(this);
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		JButton buttonPressed = (JButton) e.getSource();
 		// TODO Auto-generated method stub
-		
+		v.stop();
+		y.stop();
+		u.stop();
+	if(buttonPressed.equals(p)){
+			v.play();}
+	if(buttonPressed.equals(q)) {
+		y.play();
+	}
+	if(buttonPressed.equals(a)) {
+		u.play();
 	}
 
 }
@@ -166,5 +175,5 @@ class Song {
 			return this.getClass().getResourceAsStream(songAddress);
 		}
 	}
-}
+}}
 

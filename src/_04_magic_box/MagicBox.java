@@ -39,6 +39,10 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	@Override
 	public void run() {
+		JFrame t=new JFrame();
+		JPanel i=new JPanel();
+		JButton k=new JButton
+		
 		try {
 			loadBackgroundImage();
 			createUI();
