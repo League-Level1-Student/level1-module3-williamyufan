@@ -14,9 +14,15 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import javazoom.jl.decoder.JavaLayerException;
+
+
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
 
@@ -35,14 +41,12 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 */
 
 	BufferedImage backgroundImage;
-
-
+	JFrame t=new JFrame();
+	JPanel u=new JPanel();
+	JButton k=new JButton();
+	MediaPalace o=new MediaPalace();
 	@Override
 	public void run() {
-		JFrame t=new JFrame();
-		JPanel i=new JPanel();
-		JButton k=new JButton
-		
 		try {
 			loadBackgroundImage();
 			createUI();
@@ -58,6 +62,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.addMouseListener(this);
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -68,6 +73,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 			throw new Exception("Could not load image: " + imageFile);
 		}
 	}
+	
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -76,8 +82,24 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+	System.out.println(	backgroundImage.getRGB(e.getX(), e.getY()));
+	if(backgroundImage.getRGB(e.getX(), e.getY())==-5142949){
+		try {
+			o.playMp3FromComputer("src/i2.mp3");
+		} 
+		catch (JavaLayerException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if(backgroundImage.getRGB(e.getX(), e.getY())==-69429){
+			JOptionPane.showMessageDialog(null, "WoW");
+		}
+		if(backgroundImage.getRGB(e.getX(), e.getY())==-2638460){
+			o.loadImageFromWithinProject("spongebob.jpg");
+		}
+	}
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
